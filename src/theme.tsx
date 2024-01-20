@@ -1,15 +1,32 @@
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
+import { cyan, deepOrange, orange, teal } from '@mui/material/colors'
+import { experimental_extendTheme as extendTheme, CssVarsThemeOptions } from '@mui/material/styles'
 
-// Edit this file for custom theme
+interface CustomThemeOptions extends CssVarsThemeOptions {
+  trello: {
+    appBarHeight: string
+    boardBarHeight: string
+  }
+}
+
 const theme = extendTheme({
+  trello: {
+    appBarHeight: '48px',
+    boardBarHeight: '58px'
+  },
   colorSchemes: {
     light: {
-      palette: {}
+      palette: {
+        primary: teal,
+        secondary: deepOrange
+      }
     },
     dark: {
-      palette: {}
+      palette: {
+        primary: cyan,
+        secondary: orange
+      }
     }
   }
-})
+} as CustomThemeOptions)
 
 export default theme
