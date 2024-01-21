@@ -16,7 +16,7 @@ export default function ModeSelect() {
   }
 
   return (
-    <FormControl className='m-1 min-w-[120px]' size='small'>
+    <FormControl size='small' className='min-w-[120px]'>
       <InputLabel id='label-select-dark-light-mode'>Mode</InputLabel>
       <Select
         labelId='label-select-dark-light-mode'
