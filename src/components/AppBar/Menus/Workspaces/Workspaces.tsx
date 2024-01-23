@@ -12,7 +12,7 @@ import Cloud from '@mui/icons-material/Cloud'
 import Divider from '@mui/material/Divider'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-export default function Workspace() {
+export default function Workspaces() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -25,6 +25,7 @@ export default function Workspace() {
   return (
     <div>
       <Button
+        sx={{ color: 'white' }}
         id='basic-button-workspaces'
         aria-controls={open ? 'basic-menu-workspaces' : undefined}
         aria-haspopup='true'
