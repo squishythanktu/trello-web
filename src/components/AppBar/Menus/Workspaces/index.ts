@@ -1,3 +1,3 @@
-import Workspace from './Workspace'
+import Workspaces from './Workspaces'
 
-export default Workspace
+export default Workspaces
