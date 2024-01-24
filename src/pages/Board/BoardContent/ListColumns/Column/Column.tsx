@@ -22,6 +22,8 @@ import ListCards from './ListCards'
 import { Column as ColumnType } from 'src/apis/mock-data'
 import sortBy from 'lodash/sortBy'
 import indexOf from 'lodash/indexOf'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 interface Props {
   key: React.Key | null | undefined
@@ -32,13 +34,26 @@ export default function Column({ column }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const customTheme = theme as any
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: column._id,
+    data: { ...column }
+  })
   const open = Boolean(anchorEl)
+
   const handleClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => setAnchorEl(event.target as HTMLElement)
   const handleClose = () => setAnchorEl(null)
   const sortedCards = sortBy(column?.cards, (card) => indexOf(column.cardOrderIds, card._id))
+  const dndKitColumnStyles = {
+    transform: CSS.Translate.toString(transform),
+    transition
+  }
 
   return (
     <Box
+      ref={setNodeRef}
+      style={dndKitColumnStyles}
+      {...attributes}
+      {...listeners}
       className='ml-4 h-fit min-w-[300px] max-w-[300px] rounded-md'
       sx={{
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : '#ebecf0'),
